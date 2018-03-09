@@ -74,7 +74,7 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-      this.points+=1;
+      //this.points+=1; iga tähe eest punkt (pole vaja)
       if (this.word.left.length === 0) {
         this.guessedWords += 1;
         this.points+=10; //adding points
