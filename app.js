@@ -1,3 +1,4 @@
+
 /* TYPER */
 const TYPER = function () {
   if (TYPER.instance_) {
@@ -126,6 +127,12 @@ function structureArrayByWordLength(words) {
 
   return tempArray
 }
+function day(){
+            body.className='day';
+        }
+        function night(){
+            body.className='night';
+        }
 
 window.onload = function () {
   const typer = new TYPER()

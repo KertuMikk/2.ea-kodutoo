@@ -16,11 +16,25 @@
       
       canvas {
         position: absolute;
+		color:white;
       }
+
+      .night{
+            background: black;
+            color :white;
+        }
+      .day{ 
+            background: white;
+            color: black;
+        }
+}
     </style>
-    <script src="app.js?t=<?php filemtime('app.js'); ?>"></script>
+    <script src="app.js">
+    </script>
   </head>
-  <body>
+    <body id="body">
+        <button type="button" onclick="night()" class="btn">NIGHT</button>
+        <button type="button" onclick="day()" class="btn">DAY</button>
     <canvas></canvas>
   </body>
 </html>
