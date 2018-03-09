@@ -15,6 +15,8 @@ const TYPER = function () {
   this.wordMinLength = 5
   this.guessedWords = 0
 
+  this.points=0;
+
   this.init()
 }
 
@@ -48,7 +50,7 @@ TYPER.prototype = {
       }
     }
 
-    xmlhttp.open('GET', './lemmad2013.txt', true)
+    xmlhttp.open('GET', 'lemmad2013.txt', true)
     xmlhttp.send()
   },
 
@@ -72,15 +74,18 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-
+      //this.points+=1; iga tähe eest punkt (pole vaja)
       if (this.word.left.length === 0) {
-        this.guessedWords += 1
-        document.getElementById('myText').innerHTML = this.guessedWords
+        this.guessedWords += 1;
+        this.points+=10; //adding points
         this.generateWord()
       }
-
-      this.word.Draw()
+    }else{
+      if(this.points>0){
+        this.points-=1; //taking off points
+      }
     }
+    this.word.Draw();
   }
 }
 
@@ -94,10 +99,13 @@ const Word = function (word, canvas, ctx) {
 
 Word.prototype = {
   Draw: function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-    this.ctx.textAlign = 'center'
-    this.ctx.font = '140px Courier'
-    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.textAlign = 'center';
+    this.ctx.font = '140px Courier';
+    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2);
+    this.ctx.textAlign = 'left';
+    this.ctx.font = 'Bold 64px Courier';
+    this.ctx.fillText("Punktid: "+window.TYPER.instance_.points, 20, 96); //showing points
   },
 
   removeFirstLetter: function () {
@@ -106,12 +114,12 @@ Word.prototype = {
 }
 
 /* HELPERS */
-function structureArrayByWordLength (words) {
+function structureArrayByWordLength(words) {
   let tempArray = []
 
   for (let i = 0; i < words.length; i++) {
     const wordLength = words[i].length
-    if (tempArray[wordLength] === undefined)tempArray[wordLength] = []
+    if (tempArray[wordLength] === undefined) tempArray[wordLength] = []
 
     tempArray[wordLength].push(words[i])
   }
@@ -122,9 +130,4 @@ function structureArrayByWordLength (words) {
 window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
-}
-/* POINTS */
-
-function points(){
-  this.guessedWords*10;
 }

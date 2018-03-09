@@ -18,10 +18,9 @@
         position: absolute;
       }
     </style>
-    <script src="app.js"></script>
+    <script src="app.js?t=<?php filemtime('app.js'); ?>"></script>
   </head>
   <body>
-    <h1>Arvatud sõnade arv: <span id="myText"></span></h1>
     <canvas></canvas>
   </body>
 </html>
