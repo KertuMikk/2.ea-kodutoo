@@ -42,9 +42,9 @@ TYPER.prototype = {
         const response = xmlhttp.responseText
         const wordsFromFile = response.split('\n')
 
-        typer.words = structureArrayByWordLength(wordsFromFile)
+        window.typer.words = structureArrayByWordLength(wordsFromFile)
 
-        typer.start()
+        window.typer.start()
       }
     }
 
