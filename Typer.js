@@ -1,4 +1,4 @@
-/* TYPER */
+/* globals Word, structureArrayByWordLength */
 const TYPER = function () {
   if (TYPER.instance_) {
     return TYPER.instance_
@@ -56,7 +56,7 @@ TYPER.prototype = {
     this.word.Draw()
 
     window.addEventListener('keypress', this.keyPressed.bind(this))
-    this.start = new Date().getTime()
+    this.startTime = new Date().getTime()
     window.setInterval(this.loop.bind(this), 1)
   },
   loop: function () {
@@ -87,45 +87,6 @@ TYPER.prototype = {
       this.word.Draw()
     }
   }
-}
-
-/* WORD */
-const Word = function (word, canvas, ctx) {
-  this.word = word
-  this.left = this.word
-  this.canvas = canvas
-  this.ctx = ctx
-}
-
-Word.prototype = {
-  Draw: function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-    this.ctx.textAlign = 'center'
-    this.ctx.font = '140px Courier'
-    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
-
-    this.ctx.textAlign = 'left'
-    this.ctx.font = '140px Courier'
-    this.ctx.fillText(this.counter, 100, 100)
-  },
-
-  removeFirstLetter: function () {
-    this.left = this.left.slice(1)
-  }
-}
-
-/* HELPERS */
-function structureArrayByWordLength (words) {
-  let tempArray = []
-
-  for (let i = 0; i < words.length; i++) {
-    const wordLength = words[i].length
-    if (tempArray[wordLength] === undefined)tempArray[wordLength] = []
-
-    tempArray[wordLength].push(words[i])
-  }
-
-  return tempArray
 }
 
 window.onload = function () {
