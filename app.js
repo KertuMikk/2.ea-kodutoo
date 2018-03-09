@@ -125,3 +125,6 @@ window.onload = function () {
 }
 /* POINTS */
 
+function points(){
+  this.guessedWords*10;
+}
