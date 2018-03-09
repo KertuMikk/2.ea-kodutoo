@@ -1,8 +1,11 @@
 # 2. kodutöö – kirjutamise mängu täiendamine
-Kärt Nigols
+
 Autorid: 
 Kertu Mikk
+Kärt Nigols
 
+Funktsionaalsus:
+1) mängija saab 10 punkti iga korrektse sõna eest ja kaotab 1 punkti iga vale tähe eest (kärt)
 
 
 
