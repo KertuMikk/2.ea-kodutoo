@@ -123,3 +123,5 @@ window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
 }
+/* POINTS */
+
