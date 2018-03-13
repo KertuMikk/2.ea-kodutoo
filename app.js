@@ -126,7 +126,17 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
+<<<<<<< HEAD
 // night mode (broken)
+=======
+//night mode (broken for now)
+function day(){
+            body.className='day';
+        }
+        function night(){
+            body.className='night';
+        }
+>>>>>>> master
 
 function day () {
   this.canvas.className = 'day'
