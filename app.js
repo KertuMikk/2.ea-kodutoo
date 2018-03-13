@@ -74,7 +74,7 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-      this.points += 1
+      // this.points += 1
       if (this.word.left.length === 0) {
         this.guessedWords += 1
         this.points += 10 // adding points
@@ -102,6 +102,7 @@ Word.prototype = {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
+    this.ctx.fillStyle = '#26CDCD'
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
@@ -126,24 +127,14 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
-<<<<<<< HEAD
-// night mode (broken)
-=======
-//night mode (broken for now)
-function day(){
-            body.className='day';
-        }
-        function night(){
-            body.className='night';
-        }
->>>>>>> master
-
+// night mode (broken for now)
 function day () {
-  this.canvas.className = 'day'
+  this.body.className = 'day'
 }
 function night () {
-  this.canvas.className = 'night'
+  this.body.className = 'night'
 }
+
 window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
