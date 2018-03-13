@@ -127,6 +127,7 @@ function structureArrayByWordLength(words) {
 
   return tempArray
 }
+//night mode (broken)
 function day(){
             body.className='day';
         }
