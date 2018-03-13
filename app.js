@@ -126,6 +126,16 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
+<<<<<<< HEAD
+=======
+//night mode (broken)
+function day(){
+            body.className='day';
+        }
+        function night(){
+            body.className='night';
+        }
+>>>>>>> master
 
 window.onload = function () {
   const typer = new TYPER()
