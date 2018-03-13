@@ -44,9 +44,9 @@ TYPER.prototype = {
         const response = xmlhttp.responseText
         const wordsFromFile = response.split('\n')
 
-        TYPER.words = structureArrayByWordLength(wordsFromFile)
+        typer.words = structureArrayByWordLength(wordsFromFile)
 
-        TYPER.start()
+        typer.start()
       }
     }
 
@@ -126,17 +126,14 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
-<<<<<<< HEAD
-=======
-//night mode (broken)
-function day(){
-            body.className='day';
-        }
-        function night(){
-            body.className='night';
-        }
->>>>>>> master
+// night mode (broken)
 
+function day () {
+  this.canvas.className = 'day'
+}
+function night () {
+  this.canvas.className = 'night'
+}
 window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
