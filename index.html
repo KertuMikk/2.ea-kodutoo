@@ -8,7 +8,6 @@
         margin: 0;
         padding: 0;
       }
-
       html, body, canvas {
         width: 100%;
         height: 100%;
@@ -16,33 +15,11 @@
       
       canvas {
         position: absolute;
-		    color:white;
       }
-      .night{
-            background: black;
-            color :white;
-        }
-      .day{ 
-            background: white;
-            color: black;
-        }
-}
     </style>
-<<<<<<< HEAD
-    <script src="Helpers.js"></script>
-    <script src="Word.js"></script>
-    <script src="Typer.js"></script>
+    <script src="app.js?t=<?php filemtime('app.js'); ?>"></script>
   </head>
   <body>
-    
-=======
-    <script src="app.js">
-    </script>
-  </head>
-    <body id="body">
-        <button type="button" onclick="night()" class="btn">NIGHT</button>
-        <button type="button" onclick="day()" class="btn">DAY</button>
->>>>>>> master
     <canvas></canvas>
   </body>
 </html>

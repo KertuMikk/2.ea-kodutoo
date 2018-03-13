@@ -1,9 +1,4 @@
-<<<<<<< HEAD:Typer.js
-/* globals Word, structureArrayByWordLength */
-=======
-
 /* TYPER */
->>>>>>> master:app.js
 const TYPER = function () {
   if (TYPER.instance_) {
     return TYPER.instance_
@@ -19,13 +14,9 @@ const TYPER = function () {
   this.word = null
   this.wordMinLength = 5
   this.guessedWords = 0
-<<<<<<< HEAD:Typer.js
-  this.counter = 10
-=======
 
-  this.points=0;
+  this.points = 0
 
->>>>>>> master:app.js
   this.init()
 }
 
@@ -53,28 +44,23 @@ TYPER.prototype = {
         const response = xmlhttp.responseText
         const wordsFromFile = response.split('\n')
 
-        window.typer.words = structureArrayByWordLength(wordsFromFile)
+        TYPER.words = structureArrayByWordLength(wordsFromFile)
 
-        window.typer.start()
+        TYPER.start()
       }
     }
 
     xmlhttp.open('GET', 'lemmad2013.txt', true)
     xmlhttp.send()
   },
+
   start: function () {
     this.generateWord()
     this.word.Draw()
 
     window.addEventListener('keypress', this.keyPressed.bind(this))
-    this.startTime = new Date().getTime()
-    window.setInterval(this.loop.bind(this), 1)
   },
-  loop: function () {
-    this.word.Draw()
-    const currentTime = new Date().getTime()
-    this.counter = currentTime - this.startTime
-  },
+
   generateWord: function () {
     const generatedWordLength = this.wordMinLength + parseInt(this.guessedWords / 5)
     const randomIndex = (Math.random() * (this.words[generatedWordLength].length - 1)).toFixed()
@@ -88,23 +74,21 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-      //this.points+=1; iga tähe eest punkt (pole vaja)
+      this.points += 1
       if (this.word.left.length === 0) {
-        this.guessedWords += 1;
-        this.points+=10; //adding points
+        this.guessedWords += 1
+        this.points += 10 // adding points
         this.generateWord()
       }
-    }else{
-      if(this.points>0){
-        this.points-=1; //taking off points
+    } else {
+      if (this.points > 0) {
+        this.points -= 1 // taking off points
       }
     }
-    this.word.Draw();
+    this.word.Draw()
   }
 }
 
-<<<<<<< HEAD:Typer.js
-=======
 /* WORD */
 const Word = function (word, canvas, ctx) {
   this.word = word
@@ -115,13 +99,13 @@ const Word = function (word, canvas, ctx) {
 
 Word.prototype = {
   Draw: function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.textAlign = 'center';
-    this.ctx.font = '140px Courier';
-    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2);
-    this.ctx.textAlign = 'left';
-    this.ctx.font = 'Bold 64px Courier';
-    this.ctx.fillText("Punktid: "+window.TYPER.instance_.points, 20, 96); //showing points
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    this.ctx.textAlign = 'center'
+    this.ctx.font = '140px Courier'
+    this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
+    this.ctx.textAlign = 'left'
+    this.ctx.font = 'Bold 64px Courier'
+    this.ctx.fillText('Punktid: ' + window.TYPER.instance_.points, 20, 96) // showing points
   },
 
   removeFirstLetter: function () {
@@ -130,7 +114,7 @@ Word.prototype = {
 }
 
 /* HELPERS */
-function structureArrayByWordLength(words) {
+function structureArrayByWordLength (words) {
   let tempArray = []
 
   for (let i = 0; i < words.length; i++) {
@@ -142,19 +126,8 @@ function structureArrayByWordLength(words) {
 
   return tempArray
 }
-function day(){
-            body.className='day';
-        }
-        function night(){
-            body.className='night';
-        }
 
->>>>>>> master:app.js
 window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
 }
-<<<<<<< HEAD:Typer.js
-/* POINTS */
-=======
->>>>>>> master:app.js
