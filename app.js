@@ -14,7 +14,7 @@ const TYPER = function () {
   this.word = null
   this.wordMinLength = 5
   this.guessedWords = 0
-
+  this.counter = 10
   this.points = 0
   this.init()
 }
@@ -58,6 +58,15 @@ TYPER.prototype = {
     this.word.Draw()
 
     window.addEventListener('keypress', this.keyPressed.bind(this))
+    this.startTime = new Date().getTime()
+    window.setInterval(this.loop.bind(this), 1)
+  },
+  loop: function () {
+    this.word.Draw()
+
+    const currentTime = new Date().getTime()
+
+    this.counter = currentTime - this.startTime
   },
 
   generateWord: function () {
@@ -120,6 +129,10 @@ Word.prototype = {
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
     this.ctx.fillText('Punktid: ' + window.TYPER.instance_.points, 600, 90) // showing points
+
+    this.ctx.textAlign = 'left'
+    this.ctx.font = '140px Courier'
+    this.ctx.fillText(window.typer.counter, 600, 200) // counter
   },
 
   removeFirstLetter: function () {
