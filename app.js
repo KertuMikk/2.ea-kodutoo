@@ -86,19 +86,19 @@ TYPER.prototype = {
       if (this.word.left.length === 0) {
         this.guessedWords += 1
 
-        this.points += 10 // adding points
-        if (this.counter > 5000) {
+        if (this.counter > (this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) {
           this.points -= 5
+        } else if (this.counter < (this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) {
+          this.points += 10 // adding points
         }
         this.counter = 0
         this.startTime = new Date().getTime()
         this.generateWord()
       }
     } else {
-      if (this.points > 0) {
-        this.points -= 1 // taking off points for wrong letter
-      }
+      this.points -= 1 // taking off points for wrong letter
     }
+
     this.word.Draw()
   }
 }
