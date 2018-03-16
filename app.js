@@ -16,6 +16,7 @@ const TYPER = function () {
   this.guessedWords = 0
   this.counter = 0
   this.points = 0
+  this.time = 0
   this.init()
 }
 
@@ -73,7 +74,7 @@ TYPER.prototype = {
     const generatedWordLength = this.wordMinLength + parseInt(this.guessedWords / 5)
     const randomIndex = (Math.random() * (this.words[generatedWordLength].length - 1)).toFixed()
     const wordFromArray = this.words[generatedWordLength][randomIndex]
-
+    this.time = ((this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) / 2
     this.word = new Word(wordFromArray, this.canvas, this.ctx)
   },
 
@@ -86,9 +87,9 @@ TYPER.prototype = {
       if (this.word.left.length === 0) {
         this.guessedWords += 1
 
-        if (this.counter > (this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) {
+        if (this.counter > ((this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) / 2) {
           this.points -= 5
-        } else if (this.counter < (this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) {
+        } else if (this.counter < ((this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) / 2) {
           this.points += 10 // adding points
         }
         this.counter = 0
@@ -139,6 +140,10 @@ Word.prototype = {
     this.ctx.textAlign = 'left'
     this.ctx.font = '140px Courier'
     this.ctx.fillText(window.typer.counter, 600, 200) // counter
+
+    this.ctx.textAlign = 'left'
+    this.ctx.font = '64px Courier'
+    this.ctx.fillText('Sul on aega ' + window.typer.time + ' millisekundit', 600, 300) // counter
   },
 
   removeFirstLetter: function () {
