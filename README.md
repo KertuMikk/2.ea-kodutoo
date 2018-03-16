@@ -6,6 +6,8 @@ Kärt Nigols
 
 Funktsionaalsus:
 1) mängija saab 10 punkti iga korrektse sõna eest ja kaotab 1 punkti iga vale tähe eest (kärt)
+2) night mode (kärt)
+3) counter (kertu)
 
 
 
