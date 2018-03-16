@@ -24,14 +24,28 @@
             background: white;
             
         }
+       #button {
+    background-color:darkslategray;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    margin: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+      #button:hover{
+  background-color:darkgrey; 
+}
     </style>
     <script src="app.js">
     </script>
   </head>
     <body id="body">
 
-        <button type="button" onclick="night()" class="btn">NIGHT</button>
-        <button type="button" onclick="day()" class="btn">DAY</button>
+        <button id="button" type="button" onclick="night()" class="btn">NIGHT</button>
+        <button id="button" type="button" onclick="day()" class="btn">DAY</button>
         
     <canvas></canvas>
   </body>

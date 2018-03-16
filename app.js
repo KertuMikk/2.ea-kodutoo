@@ -74,7 +74,7 @@ TYPER.prototype = {
 
     if (letter === this.word.left.charAt(0)) {
       this.word.removeFirstLetter()
-      // this.points += 1
+      // this.points += 1 A point for every letter (not needed)
       if (this.word.left.length === 0) {
         this.guessedWords += 1
         this.points += 10 // adding points
@@ -82,7 +82,7 @@ TYPER.prototype = {
       }
     } else {
       if (this.points > 0) {
-        this.points -= 1 // taking off points
+        this.points -= 1 // taking off points for wrong letter
       }
     }
     this.word.Draw()
@@ -102,7 +102,7 @@ Word.prototype = {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
-    this.ctx.fillStyle = '#26CDCD'
+    this.ctx.fillStyle = '#26CDCD' //change text color
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
@@ -127,7 +127,7 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
-// night mode (broken for now)
+// night mode (semi-broken for now)
 function day () {
   this.body.className = 'day'
 }
