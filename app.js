@@ -14,7 +14,7 @@ const TYPER = function () {
   this.word = null
   this.wordMinLength = 5
   this.guessedWords = 0
-  this.counter = 10
+  this.counter = 0
   this.points = 0
   this.init()
 }
@@ -59,14 +59,14 @@ TYPER.prototype = {
 
     window.addEventListener('keypress', this.keyPressed.bind(this))
     this.startTime = new Date().getTime()
-    window.setInterval(this.loop.bind(this), 1)
+    window.setInterval(this.loop.bind(this), 1000)
   },
   loop: function () {
     this.word.Draw()
 
     const currentTime = new Date().getTime()
 
-    this.counter = currentTime - this.startTime
+    this.counter = this.startTime - currentTime
   },
 
   generateWord: function () {
@@ -85,6 +85,8 @@ TYPER.prototype = {
       // this.points += 1 A point for every letter (not needed)
       if (this.word.left.length === 0) {
         this.guessedWords += 1
+        this.counter = 0
+        this.startTime = new Date().getTime()
         this.points += 10 // adding points
         this.generateWord()
       }
