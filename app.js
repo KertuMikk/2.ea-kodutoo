@@ -108,19 +108,18 @@ function night () {
 
 Word.prototype = {
   Draw: function () {
-    let type = this.body.className(night, day)
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
-    if (type === 'day') {
+    /* if (this.body.className === 'day') {
       this.ctx.fillStyle = '#FFFFFF' // change text color
     } else {
       this.ctx.fillStyle = '#000000'
-    }
+    } */
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
-    this.ctx.fillText('Punktid: ' + window.TYPER.instance_.points, 20, 96) // showing points
+    this.ctx.fillText('Punktid: ' + window.TYPER.instance_.points, 600, 90) // showing points
   },
 
   removeFirstLetter: function () {
