@@ -16,7 +16,6 @@ const TYPER = function () {
   this.guessedWords = 0
 
   this.points = 0
-
   this.init()
 }
 
@@ -97,12 +96,27 @@ const Word = function (word, canvas, ctx) {
   this.ctx = ctx
 }
 
+// night mode (semi-broken for now)
+function day () {
+  this.body.className = 'day'
+  console.log('day mode')
+}
+function night () {
+  console.log('night mode')
+  this.body.className = 'night'
+}
+
 Word.prototype = {
   Draw: function () {
+    let type = this.body.className(night, day)
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
-    this.ctx.fillStyle = '#26CDCD' //change text color
+    if (type === 'day') {
+      this.ctx.fillStyle = '#FFFFFF' // change text color
+    } else {
+      this.ctx.fillStyle = '#000000'
+    }
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
@@ -126,13 +140,6 @@ function structureArrayByWordLength (words) {
   }
 
   return tempArray
-}
-// night mode (semi-broken for now)
-function day () {
-  this.body.className = 'day'
-}
-function night () {
-  this.body.className = 'night'
 }
 
 window.onload = function () {
