@@ -19,23 +19,6 @@ MainApp.routes = {
   'app-view': {
     'render': function () {
       console.log('>>>> App')
-
-      const localValue = localStorage.getItem('textInput')
-      if (localValue) document.querySelector('#textInput').value = JSON.parse(localValue).text
-
-      document
-        .querySelector('#saveLocal')
-        .addEventListener('click', saveServer)
-
-      document
-        .querySelector('#saveServer')
-        .addEventListener('click', saveServer)
-
-      document
-        .querySelector('#loadServer')
-        .addEventListener('click', loadServer)
-
-      window.addEventListener('keypress', autosave)
     }
   }
 }
@@ -69,61 +52,6 @@ MainApp.prototype = {
     document.querySelector('.active-menu').className = document.querySelector('.active-menu').className.replace('active-menu', '')
     document.querySelector('.' + this.currentRoute).className += ' active-menu'
   }
-
-} // Main
-
-let timer // GLOBAL
-
-function autosave () {
-// after typing init autosave
-
-  const doneTypingInterval = 2500
-
-  if (timer) { clearTimeout(timer) }
-  timer = window.setTimeout(function () {
-    // TODO check if really changed
-    saveLocal()
-    console.log('autosave')
-  }, doneTypingInterval)
-}
-
-function saveLocal () {
-  console.log(window.app)
-  const o = {
-    text: window.app.input.value,
-    date: new Date()
-  }
-  localStorage.setItem('textInput', JSON.stringify(o))
-}
-
-function saveServer () {
-  const o = {
-    text: window.app.input.value,
-    date: new Date()
-  }
-
-  let xhttp = new XMLHttpRequest()
-  xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      console.log('salvestatud')
-    }
-  }
-  xhttp.open('POST', 'save.php', true)
-  xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-  xhttp.send('json=' + JSON.stringify(o))
-}
-
-function loadServer () {
-  let xhttp = new XMLHttpRequest()
-  xhttp.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      console.log('laetud')
-      console.log(JSON.parse(xhttp.responseText))
-    }
-  }
-
-  xhttp.open('GET', 'save.php?latest', true)
-  xhttp.send()
 }
 
 // kui leht laetud käivitan app'i
