@@ -118,8 +118,8 @@ function day () {
   console.log('day mode')
 }
 function night () {
-  console.log('night mode')
   this.body.className = 'night'
+  console.log('night mode')
 }
 
 Word.prototype = {
@@ -127,11 +127,7 @@ Word.prototype = {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
     this.ctx.font = '140px Courier'
-    /* if (this.body.className === 'day') {
-      this.ctx.fillStyle = '#FFFFFF' // change text color
-    } else {
-      this.ctx.fillStyle = '#000000'
-    } */
+    this.ctx.fillStyle = '#C8A2BB' // change text color
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
     this.ctx.font = 'Bold 64px Courier'
