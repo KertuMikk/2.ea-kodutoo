@@ -92,16 +92,35 @@ TYPER.prototype = {
         } else if (this.counter < ((this.wordMinLength + parseInt(this.guessedWords / 5)) * 1000) / 2) {
           this.points += 10 // adding points
         }
+
         this.counter = 0
         this.startTime = new Date().getTime()
         this.generateWord()
+
+        savePlayer()
       }
     } else {
       this.points -= 1 // taking off points for wrong letter
     }
-
-    this.word.Draw()
+    // this.word.Draw()
+    /* function savePlayer () {
+      let localString = JSON.stringify(this.arr)
+      let readArray = JSON.parse(localString)
+      let player = document.getElementById('name').value
+      let p1 = {name: player, score: this.points}
+      readArray.push(p1)
+      console.log(player)
+    } */ /// test
+    function savePlayer () {
+      console.log(window.app)
+      const o = {
+        text: document.getElementById('name').value,
+        score: this.points
+      }
+      localStorage.setItem('textInput', JSON.stringify(o))
+    }
   }
+
 }
 
 /* WORD */
@@ -164,4 +183,12 @@ function structureArrayByWordLength (words) {
 window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
+  document
+    .querySelector('#submit')
+    .addEventListener('click', savePlayer)
+
+  let input = document.querySelector('#name')
+
+  const localValue = localStorage.getItem('textInput')
+  if (localValue) input.value = JSON.parse(localValue).text
 }
