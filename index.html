@@ -10,21 +10,21 @@
 <body id="body">
   <!-- Menu -->
   <nav class="menu">
-      <ul class="menu-list">
-        <li class="menu-item"><a href="#home-view" class="menu-link home-view active-menu">Home</a></li>
-        <li class="menu-item"><a href="#app-view" class="menu-link app-view">App</a></li>
-      </ul>
-    </nav>
+    <ul class="menu-list">
+      <li class="menu-item"><a href="#home-view" class="menu-link home-view active-menu">Home</a></li>
+      <li class="menu-item"><a href="#app-view" class="menu-link app-view">App</a></li>
+    </ul>
+  </nav>
 
-    <main role="main">
-  <section id="home-view">
-  <button class="button first" type="button" onclick="night()" class="btn">NIGHT</button>
-  <button class="button second" type="button" onclick="day()" class="btn">DAY</button>
- </section>
-
+  <main role="main">
+ <section id="home-view">
+   <!-- <button class="button first" type="button" onclick="night()" class="btn">NIGHT</button>
+  <button class="button second" type="button" onclick="day()" class="btn">DAY</button> -->
+  <div class="name" id="name">Name:
+      <input type="text" id="nameText" style="font-size: 35px" size="10" maxlength="10" style="margin: 0 auto; display: block;">
+</div>
+</section>
   <section id="app-view">
-      <input type="text" id="name" value="Name" > <br>
-      <button type="button" type="submit" class="btn">Submit</button>
   <canvas></canvas>
   </section>
 </body>

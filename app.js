@@ -185,7 +185,7 @@ window.onload = function () {
   window.typer = typer
   document
     .querySelector('#submit')
-    .addEventListener('click', savePlayer)
+    .addEventListener('click', savePlayer())
 
   let input = document.querySelector('#name')
 
