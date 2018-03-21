@@ -95,29 +95,15 @@ TYPER.prototype = {
 
         this.counter = 0
         this.startTime = new Date().getTime()
-        this.generateWord()
+        if (this.guessedWords === 10) {
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+          gameFinish()
+        }
 
-        savePlayer()
+        this.generateWord()
       }
     } else {
       this.points -= 1 // taking off points for wrong letter
-    }
-    // this.word.Draw()
-    /* function savePlayer () {
-      let localString = JSON.stringify(this.arr)
-      let readArray = JSON.parse(localString)
-      let player = document.getElementById('name').value
-      let p1 = {name: player, score: this.points}
-      readArray.push(p1)
-      console.log(player)
-    } */ /// test
-    function savePlayer () {
-      console.log(window.app)
-      const o = {
-        text: document.getElementById('name').value,
-        score: this.points
-      }
-      localStorage.setItem('textInput', JSON.stringify(o))
     }
   }
 
@@ -192,3 +178,41 @@ window.onload = function () {
   const localValue = localStorage.getItem('textInput')
   if (localValue) input.value = JSON.parse(localValue).text
 }
+
+function gameFinish () {
+  let r = confirm('Game finished! \n Your Score: ' + window.typer.points + ' \n Restart?')
+  saveScore(document.getElementById('nameText').value, window.typer.points)
+  if (r === true) {
+    window.typer.guessedWords = 0
+    window.typer.points = 0
+    clearScore()
+    restartGame()
+  } else {
+    window.location.href = ''
+  }
+}
+function restartGame () {
+  this.counter = 0
+  const typer = new TYPER()
+  window.typer = typer
+  typer.generateWord()
+  typer.word.Draw()
+}
+function clearScore () {
+  window.typer.points = 0
+  window.typer.time = 0
+}
+function saveScore (playerName, playerScore) {
+  arr = []
+  if (window.localStorage.length == 0) {
+    player = [playerName, playerScore]
+    arr.push(player)
+    localStorage.setItem('arr', JSON.stringify(arr))
+  } else {
+    var stored = JSON.parse(localStorage.getItem('arr'))
+    var player2 = [playerName, playerScore]
+    stored.push(player2)
+    localStorage.setItem('arr', JSON.stringify(stored))
+  }
+}
+// https://github.com/nsalong/2.ea-kodutoo
