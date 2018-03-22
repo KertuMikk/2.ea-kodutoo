@@ -238,4 +238,4 @@ window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
 }
-// kasutatud https://github.com/nsalong/2.ea-kodutoo koodi
+// kasutatud https://github.com/nsalong/2.ea-kodutoo koodi (enamus helpersitest)
