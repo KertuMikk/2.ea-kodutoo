@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>typer</title>
+  <title>Game</title>
   <!--<script src="app.js"></script>-->
   <script src="app.js" src="single.js"  charset="utf-8"> </script>
   <link rel="stylesheet" href="style.css">
@@ -12,21 +12,41 @@
   <nav class="menu">
     <ul class="menu-list">
       <li class="menu-item"><a href="#home-view" class="menu-link home-view active-menu">Home</a></li>
-      <li class="menu-item"><a href="#app-view" class="menu-link app-view">App</a></li>
+      <li class="menu-item"><a href="#app-view" onclick="checkNameInput();clearScore()" class="menu-link app-view">App</a></li>
+      <li class="menu-item"><a href="#score-view"onclick="showHighScores ()" class="menu-link score-view ">Highscores</a></li>
+
     </ul>
   </nav>
 
   <main role="main">
  <section id="home-view">
+   
    <!-- <button class="button first" type="button" onclick="night()" class="btn">NIGHT</button>
   <button class="button second" type="button" onclick="day()" class="btn">DAY</button> -->
+  
   <div class="name" id="name">Name:
       <input type="text" id="nameText" style="font-size: 35px" size="10" maxlength="10" style="margin: 0 auto; display: block;">
 </div>
 </section>
   <section id="app-view">
-  <canvas></canvas>
+      <div id="gameStartDiv">
+  <canvas></canvas></div>
   </section>
+  <section id="score-view">
+      <div class="scores" id="scores">
+          <p>1.	<label id="1.">null</label></p>
+          <p>2.	<label id="2.">null</label></p>
+          <p>3.	<label id="3.">null</label></p>
+          <p>4.	<label id="4.">null</label></p>
+          <p>5.	<label id="5.">null</label></p>
+          <p>6.	<label id="6.">null</label></p>
+          <p>7.	<label id="7.">null</label></p>
+          <p>8.	<label id="8.">null</label></p>
+          <p>9.	<label id="9.">null</label></p>
+          <p>10.	<label id="10.">null</label></p>
+        </div>
+     
+   </section>
 </body>
 </main>
 </html>

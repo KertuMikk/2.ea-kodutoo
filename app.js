@@ -165,24 +165,27 @@ function structureArrayByWordLength (words) {
 
   return tempArray
 }
+function checkNameInput () {
+  console.log(document.getElementById('nameText').value)
+  let x = document.getElementById('nameText').value
+  if (document.getElementById('nameText').value !== '') {
+    startGame()
+  } else {
+    alert('Name field is empty!')
+  }
+}
+function startGame () {
+  window.typer.points = 0
+  window.typer.counter = 0
 
-window.onload = function () {
   const typer = new TYPER()
   window.typer = typer
-  document
-    .querySelector('#submit')
-    .addEventListener('click', savePlayer())
-
-  let input = document.querySelector('#name')
-
-  const localValue = localStorage.getItem('textInput')
-  if (localValue) input.value = JSON.parse(localValue).text
 }
 
 function gameFinish () {
   let r = confirm('Game finished! \n Your Score: ' + window.typer.points + ' \n Restart?')
   saveScore(document.getElementById('nameText').value, window.typer.points)
-  if (r === true) {
+  if (r == true) {
     window.typer.guessedWords = 0
     window.typer.points = 0
     clearScore()
@@ -200,7 +203,8 @@ function restartGame () {
 }
 function clearScore () {
   window.typer.points = 0
-  window.typer.time = 0
+  window.typer.counter = 0
+  window.typer.startTime = new Date().getTime()
 }
 function saveScore (playerName, playerScore) {
   arr = []
@@ -209,10 +213,29 @@ function saveScore (playerName, playerScore) {
     arr.push(player)
     localStorage.setItem('arr', JSON.stringify(arr))
   } else {
-    var stored = JSON.parse(localStorage.getItem('arr'))
-    var player2 = [playerName, playerScore]
+    stored = JSON.parse(localStorage.getItem('arr'))
+    player2 = [playerName, playerScore]
     stored.push(player2)
     localStorage.setItem('arr', JSON.stringify(stored))
   }
 }
-// https://github.com/nsalong/2.ea-kodutoo
+function showHighScores () {
+  for (let i = 0; i < 10; i++) {
+    document.getElementById(i + 1 + '.').innerHTML = sortArray()[i]
+  }
+}
+function sortArray () {
+  unsorted = JSON.parse(localStorage.getItem('arr'))
+  sorted = unsorted.sort(function (a, b) {
+    return a[1] - b[1]
+  })
+  sorted2 = sorted.reverse(function (a, b) {
+    return a[1] - b[1]
+  })
+  return sorted2
+}
+window.onload = function () {
+  const typer = new TYPER()
+  window.typer = typer
+}
+// kasutatud https://github.com/nsalong/2.ea-kodutoo koodi
