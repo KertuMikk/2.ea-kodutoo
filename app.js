@@ -141,10 +141,14 @@ Word.prototype = {
     this.ctx.textAlign = 'left'
     this.ctx.font = '140px Courier'
     this.ctx.fillText(window.typer.counter, 600, 200) // counter
-
+    
     this.ctx.textAlign = 'left'
     this.ctx.font = '64px Courier'
     this.ctx.fillText('Sul on aega ' + window.typer.time + ' millisekundit', 600, 300) // counter
+    
+   /* this.ctx.textAlign = 'left'
+    this.ctx.font = '64px Courier'
+    this.ctx.fillText ('Arvatud sõnade arv on: '+window.TYPER.guessedWords)*/
   },
 
   removeFirstLetter: function () {

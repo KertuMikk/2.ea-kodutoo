@@ -8,6 +8,8 @@ Funktsionaalsus:
 1) mängija saab 10 punkti iga korrektse sõna eest ja kaotab 1 punkti iga vale tähe eest (kärt)
 2) night mode (kärt)
 3) counter ja -5p kui mängija ei kirjuta sõna piisavalt kiirelt (kertu)
+4) menu (single page app stiil) (kärt)
+5)local storage ja scoreboard (kertu)
 
 
 
