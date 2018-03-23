@@ -141,14 +141,14 @@ Word.prototype = {
     this.ctx.textAlign = 'left'
     this.ctx.font = '140px Courier'
     this.ctx.fillText(window.typer.counter, 600, 200) // counter
-    
+
     this.ctx.textAlign = 'left'
     this.ctx.font = '64px Courier'
     this.ctx.fillText('Sul on aega ' + window.typer.time + ' millisekundit', 600, 300) // counter
-    
-   /* this.ctx.textAlign = 'left'
+
+    this.ctx.textAlign = 'left'
     this.ctx.font = '64px Courier'
-    this.ctx.fillText ('Arvatud sõnade arv on: '+window.TYPER.guessedWords)*/
+    this.ctx.fillText('Arvatud sõnade arv on: ' + window.typer.guessedWords + '/10', 600, 400)
   },
 
   removeFirstLetter: function () {
@@ -175,7 +175,7 @@ function checkNameInput () {
   if (document.getElementById('nameText').value !== '') {
     startGame()
   } else {
-    alert('Name field is empty!')
+    alert('Nimi on puudu!')
   }
 }
 function startGame () {
@@ -187,7 +187,7 @@ function startGame () {
 }
 
 function gameFinish () {
-  let r = confirm('Game finished! \n Your Score: ' + window.typer.points + ' \n Restart?')
+  let r = confirm('Mäng läbi! \n Sinu skoor: ' + window.typer.points + ' \n Restart?')
   saveScore(document.getElementById('nameText').value, window.typer.points)
   if (r == true) {
     window.typer.guessedWords = 0
