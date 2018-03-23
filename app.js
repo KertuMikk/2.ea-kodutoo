@@ -131,7 +131,7 @@ Word.prototype = {
   Draw: function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
     this.ctx.textAlign = 'center'
-    this.ctx.font = '140px Courier'
+    this.ctx.font = 'Bold 140px Courier'
     this.ctx.fillStyle = '#C8A2BB' // change text color
     this.ctx.fillText(this.left, this.canvas.width / 2, this.canvas.height / 2)
     this.ctx.textAlign = 'left'
@@ -143,11 +143,11 @@ Word.prototype = {
     this.ctx.fillText(window.typer.counter, 600, 200) // counter
 
     this.ctx.textAlign = 'left'
-    this.ctx.font = '64px Courier'
+    this.ctx.font = '54px Courier'
     this.ctx.fillText('Sul on aega ' + window.typer.time + ' millisekundit', 600, 300) // counter
 
     this.ctx.textAlign = 'left'
-    this.ctx.font = '64px Courier'
+    this.ctx.font = '54px Courier'
     this.ctx.fillText('Arvatud sõnade arv on: ' + window.typer.guessedWords + '/10', 600, 400)
   },
 
