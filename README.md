@@ -10,7 +10,7 @@ Funktsionaalsus:
 3) counter ja -5p kui mängija ei kirjuta sõna piisavalt kiirelt (kertu)
 4) menu (single page app stiil) (kärt)
 5) local storage ja scoreboard (kertu)
-6) kujundus
+6) kujundus (kärt)
 ![skeem](https://user-images.githubusercontent.com/31847335/37821533-89e2e7c0-2e8c-11e8-880a-c1295b395b50.png)
 
 
