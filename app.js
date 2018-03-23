@@ -117,7 +117,7 @@ const Word = function (word, canvas, ctx) {
   this.ctx = ctx
 }
 
-// night mode (semi-broken for now)
+// night mode
 function day () {
   this.body.className = 'day'
   console.log('day mode')

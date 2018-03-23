@@ -10,7 +10,7 @@ main > *:last-child {
 }
 main > *:target {
   display: block;
-}
+} 
 main > *:target ~ * {
   display: none;
 }
@@ -79,12 +79,12 @@ main {
 .menu-link:focus {
   outline: none;
 }
-.menu-link:active {
+/*.menu-link:active {
   color: rgb(95,75,139);
 }
 .menu-link.active-menu {
   border: 2px solid rgb(95,75,139);
-}
+}*/
  * {
       margin: 0;
       padding: 0;
@@ -114,7 +114,7 @@ main {
     }
 
     .button {
-      background-color: darkslategray;
+      background-color: rgb(95,75,139);
       border: none;
       color: white;
       padding: 15px 32px;
@@ -127,16 +127,19 @@ main {
       z-index: 100;
     }
 
-    .first {
+    first {
       left: 1px;
-      top: 1px;
+      top: 0px;
     }
 
     .second {
-      left: 115px;
-      top: 1px;
+      left: 370px;
+      top: 0px;
     }
 
     .button:hover {
       background-color: darkgrey;
+    }
+    .name{
+      color:#C8A2BB;
     }
